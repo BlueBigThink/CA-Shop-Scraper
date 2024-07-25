@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError, CommandParser
 from scraper.models import Website, Category, Product
-from .extractor.kmstools import KmstoolsScraper
 # from .extractor.canadiantire import CandianTireScraper
+from .extractor.kmstools import KmstoolsScraper
 
 class Command(BaseCommand):
     help = "Scrape all categories and products from other site"
@@ -10,7 +10,6 @@ class Command(BaseCommand):
     
     def handle(self, *args, **options):
         site_name = options['site']
-        print("++++++++++++++++++++++",site_name)
         if site_name == "sportchek":
             scraper = CandianTireScraper()
             scraper.set_settings({
